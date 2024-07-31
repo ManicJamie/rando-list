@@ -37,11 +37,12 @@
          | 
         {% endif %}
     {%- endif -%}
-    {{ game_data.genres | join: ", " }}
-    {% if game_data.genres.size > 0 && game_data.platforms.size > 0 %}
-     | 
-    {% endif %}
-    {{ game_data.platforms | join: ", " }}
+    {%- for platform in game_data.platforms %}
+        <span class="badge text-bg-secondary">{{ platform }}</span> 
+    {%- endfor %}
+    {%- for genre in game_data.genres %}
+        <span class="badge text-bg-warning">{{ genre }}</span> 
+    {%- endfor %}
 </p>
 
 {%- if game_data.comment -%}
